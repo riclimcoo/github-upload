@@ -7,13 +7,17 @@ public abstract class Trick {
     protected static final int SAME = 0;
     protected static final int WEAKER = -1;
 
-    public Trick(CardList cardList) throws InvalidTrickException {
+    public Trick(CardList cardList) throws InvalidComboException {
         if (isValid(cardList)){
             this.cardList = cardList;
         }
         else {
-            throw new InvalidTrickException();
+            throw new InvalidComboException();
         }
+    }
+
+    public Trick(Card ...cards){
+        this(new CardList(cards));
     }
 
     public int compareTo(Trick challenger){

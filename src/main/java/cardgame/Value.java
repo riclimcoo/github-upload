@@ -16,7 +16,15 @@ public class Value extends CardProperty{
     protected static final Value TWO = new Value("Two", 12);
     protected static final Value[] ALLVALUES = {THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, JACK, QUEEN, KING, ACE, TWO};
 
-    public Value(String name, int strength){
+    private Value(String name, int strength){
         super(name, strength);
+    }
+
+    public int findIndex(){
+        for (int i = 0; i < ALLVALUES.length; i++){
+            if (this == ALLVALUES[i]) return i;
+        }
+
+        throw new RuntimeException();
     }
 }

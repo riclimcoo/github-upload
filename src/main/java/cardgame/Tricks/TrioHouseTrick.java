@@ -1,16 +1,16 @@
 package cardgame;
 
-public class QuadHouseTrick extends Trick {
+public class TrioHouseTrick extends Trick {
     private Value value;
 
-    public QuadHouseTrick(CardList cardList) throws InvalidTrickException{
+    public TrioHouseTrick(CardList cardList) throws InvalidComboException{
         super(cardList);
-        value = cardList.getQuad().get(0).getValue();
+        value = cardList.getTrio().get(0).getValue();
     }
 
     public boolean isValid(CardList cardList){
         if (cardList.size() != length()) return false;
-        return !cardList.getQuad().isEmpty();
+        return !cardList.getTrio().isEmpty();
     }
 
     public int length() {
@@ -19,7 +19,7 @@ public class QuadHouseTrick extends Trick {
 
     @Override
     protected boolean beatsSameType(Trick trick) {
-        QuadHouseTrick challenger = (QuadHouseTrick) trick;
+        TrioHouseTrick challenger = (TrioHouseTrick) trick;
         return this.value.canBeat(challenger.value);
     }
 

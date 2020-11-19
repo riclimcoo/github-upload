@@ -127,4 +127,9 @@ public abstract class ListWrapper<Type> implements List<Type> {
         return internalList.subList(fromIndex, toIndex);
     }
 
+    @Override
+    public String toString(){
+        return internalList.toString();
+    }
+
 }

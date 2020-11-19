@@ -3,7 +3,7 @@ package cardgame;
 public class PairTrick extends Trick {
     Card strongestCard;
 
-    public PairTrick(CardList cardList) throws InvalidTrickException{
+    public PairTrick(CardList cardList) throws InvalidComboException{
         super(cardList);
         strongestCard = cardList.getStrongestCard();
     }

@@ -1,6 +1,6 @@
 package cardgame;
 
-public class InvalidTrickException extends RuntimeException {
+public class InvalidComboException extends RuntimeException {
 
     /**
      *

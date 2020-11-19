@@ -4,7 +4,7 @@ package cardgame;
 public class FlushTrick extends Trick {
     Suit ourSuit;
 
-    public FlushTrick(CardList cardList) throws InvalidTrickException {
+    public FlushTrick(CardList cardList) throws InvalidComboException {
         super(cardList);
         ourSuit = cardList.get(0).getSuit();
     }

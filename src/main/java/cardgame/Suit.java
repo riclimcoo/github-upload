@@ -7,7 +7,7 @@ public class Suit extends CardProperty{
     protected static final Suit SPADES = new Suit("Spades", 3);
     protected static final Suit[] ALLSUITS = {DIAMONDS, CLUBS, HEARTS, SPADES};
     
-    public Suit(String name, int strength){
+    private Suit(String name, int strength){
         super(name, strength);
     }
 }

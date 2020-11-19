@@ -81,7 +81,7 @@ public class TrickTest {
         assertTrue(trioOfQueens.beatsSameType(trioOfEights));
     }
 
-    @Test(expected = InvalidTrickException.class)
+    @Test(expected = InvalidComboException.class)
     public void shouldRejectNonmatchingPairs(){
         new PairTrick(new CardList (queenOfDiamonds, eightOfHearts));
             // Exception should be thrown here.
@@ -89,17 +89,25 @@ public class TrickTest {
         assertTrue(false);
     }
 
-    @Test(expected = InvalidTrickException.class)
+    @Test(expected = InvalidComboException.class)
     public void shouldRejectInvalidTrios(){
-        new PairTrick(new CardList (queenOfDiamonds, eightOfHearts, queenOfHearts));
+        new TrioHouseTrick(new CardList (queenOfDiamonds, eightOfHearts, queenOfHearts));
             // Exception should be thrown here.
 
         assertTrue(false);
     }
 
-    @Test(expected = InvalidTrickException.class)
+    @Test(expected = InvalidComboException.class)
+    public void shouldRejectInvalidQuadros(){
+        new QuadHouseTrick(new CardList (queenOfDiamonds, eightOfHearts, queenOfHearts));
+            // Exception should be thrown here.
+
+        assertTrue(false);
+    }
+
+    @Test(expected = InvalidComboException.class)
     public void shouldRejectInvalidTrioHouse(){
-        new TrioHouseTrick(new CardList (queenOfDiamonds, eightOfHearts, queenOfHearts));
+        new TrioHouseTrick(new CardList (queenOfDiamonds, eightOfHearts, queenOfHearts, threeOfSpades, aceOfSpades));
             // Exception should be thrown here.
 
         assertTrue(false);

@@ -1,5 +1,7 @@
 package cardgame;
 
+import java.util.Collections;
+
 public class CardList extends ListWrapper<Card> {
 
     public CardList(){
@@ -13,14 +15,14 @@ public class CardList extends ListWrapper<Card> {
         }
     }
 
-    public Suit[] getSuits() {
-        Suit[] suitsArr = new Suit[size()];
-        int counter = 0;
-        for (Card card : this) {
-            suitsArr[counter++] = card.getSuit();
-        }
-        return suitsArr;
-    }
+    // public Suit[] getSuits() {
+    //     Suit[] suitsArr = new Suit[size()];
+    //     int counter = 0;
+    //     for (Card card : this) {
+    //         suitsArr[counter++] = card.getSuit();
+    //     }
+    //     return suitsArr;
+    // }
 
     public CardList getCardsWith(CardProperty desiredProperty) {
         CardList newList = new CardList();
@@ -87,11 +89,6 @@ public class CardList extends ListWrapper<Card> {
         return true;
     }
 
-    public Boolean hasCardsWithCount(int count){
-        CardList list = getCardsWithMatchCount(count);
-        return !list.isEmpty();
-    }
-
     public CardList getPair(){
         return getCardsWithMatchCount(2);
     }
@@ -104,16 +101,52 @@ public class CardList extends ListWrapper<Card> {
         return getCardsWithMatchCount(4);
     }
 
+    public boolean hasPair(){
+        return !getCardsWithMatchCount(2).isEmpty();
+    }
+
+    public boolean hasTrio(){
+        return !getCardsWithMatchCount(3).isEmpty();
+    }
+
+    public boolean hasQuad(){
+        return !getCardsWithMatchCount(4).isEmpty();
+    }
+
     public Boolean isPair(){
-        return (hasCardsWithCount(2) && (size() == 2));
+        return (hasPair() && (size() == 2));
     }
 
     public Boolean isTrio(){
-        return (hasCardsWithCount(3) && (size() == 3));
+        return (hasTrio() && (size() == 3));
     }
 
     public Boolean isQuad(){
-        return (hasCardsWithCount(4) && (size() == 4));
+        return (hasQuad() && (size() == 4));
+    }
+
+    public Boolean isTrioHouse(){
+        return (size() == 5 && hasPair() && hasTrio());
+    }
+
+    public Boolean isQuadHouse(){
+        return (size() == 5 && hasQuad());
+    }
+
+    public Boolean isFlush(){
+        return (size() == 5 && hasSameSuits());
+    }
+
+    public Boolean isStraight(){
+        if (size() != 5) return false;
+        Collections.sort(this);
+        int firstValueIndex = this.get(0).getValue().findIndex();
+        for (int i = 0; i < 5; i++){
+            Value myValue = get(i).getValue();
+            Value expectedValue = Value.ALLVALUES[firstValueIndex + i];
+            if (myValue != expectedValue) return false;
+        }
+        return true;
     }
 
     public CardList clone(){
@@ -121,4 +154,5 @@ public class CardList extends ListWrapper<Card> {
         clonedList.addAll(this);
         return clonedList;
     }
+
 }

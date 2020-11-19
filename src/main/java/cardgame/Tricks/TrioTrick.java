@@ -3,7 +3,7 @@ package cardgame;
 public class TrioTrick extends Trick {
     Value value;
 
-    public TrioTrick(CardList cardList) throws InvalidTrickException{
+    public TrioTrick(CardList cardList) throws InvalidComboException{
         super(cardList);
         value = cardList.get(0).getValue();
     }
