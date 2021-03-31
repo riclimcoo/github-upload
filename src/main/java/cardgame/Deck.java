@@ -1,39 +1,42 @@
 package cardgame;
 
-import java.util.ArrayList;
 import java.util.Collections;
 
 public class Deck {
-   ArrayList<Card> cardList;
+    CardList cardList;
    
-   public Deck(){
-       cardList = new ArrayList<Card>();
-        for (Suit suit : Suit.ALLSUITS){
-            for (Value value: Value.ALLVALUES) {
-                cardList.add(new Card(value, suit));
+    public Deck(){
+        cardList = new CardList();
+            for (Suit suit : Suit.ALLSUITS){
+                for (Value value: Value.ALLVALUES) {
+                    cardList.add(new Card(value, suit));
+                }
             }
+    }
+
+    public void shuffle(){
+        Collections.shuffle(cardList);
+    }
+
+    public CardList draw(int amount){
+        CardList newList = new CardList();
+        for (int i = 0; i < amount; i++){
+            newList.add(draw());
         }
-   }
+        return newList;
+    }
 
-   public void shuffle(){
-       Collections.shuffle(cardList);
-   }
+    public Card draw(){
+        Card firstCard = cardList.get(0);
+        cardList.remove(0);
+        return firstCard;
+    }
 
-   public Card draw(int i){
-       Card card = peek(i);
-       cardList.remove(0);
-       return card;
-   }
+    public Card peek(){
+        return cardList.get(0);
+    }
 
-   public Card peek(int i){
-       return cardList.get(i);
-   }
-
-   public Card draw(){
-       return draw(0);
-   }
-
-   public Card peek(){
-       return peek(0);
-   }
+    public boolean isEmpty(){
+        return cardList.isEmpty();
+    }
 }

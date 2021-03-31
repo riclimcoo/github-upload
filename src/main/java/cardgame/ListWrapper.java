@@ -99,7 +99,7 @@ public abstract class ListWrapper<Type> implements List<Type> {
 
     @Override
     public Type remove(int index) {
-        return remove(index);
+        return internalList.remove(index);
     }
 
     @Override

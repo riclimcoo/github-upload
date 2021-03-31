@@ -15,14 +15,14 @@ public class CardList extends ListWrapper<Card> {
         }
     }
 
-    // public Suit[] getSuits() {
-    //     Suit[] suitsArr = new Suit[size()];
-    //     int counter = 0;
-    //     for (Card card : this) {
-    //         suitsArr[counter++] = card.getSuit();
-    //     }
-    //     return suitsArr;
-    // }
+    public Suit[] getSuits() {
+        Suit[] suitsArr = new Suit[size()];
+        int counter = 0;
+        for (Card card : this) {
+            suitsArr[counter++] = card.getSuit();
+        }
+        return suitsArr;
+    }
 
     public CardList getCardsWith(CardProperty desiredProperty) {
         CardList newList = new CardList();
@@ -88,6 +88,7 @@ public class CardList extends ListWrapper<Card> {
         }
         return true;
     }
+
 
     public CardList getPair(){
         return getCardsWithMatchCount(2);

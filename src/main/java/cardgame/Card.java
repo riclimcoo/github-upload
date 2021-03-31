@@ -2,6 +2,10 @@ package cardgame;
 
 public class Card implements Comparable<Card> {
 
+    // public enum Suit {Diamonds, Clubs, Spades, Hearts}
+    // public enum Value {Three, Four, Five, Six, Seven, Eight, Nine,
+    //                     Ten, Jack, Queen, King, Ace, Two}
+
     private CardProperty value;
     private CardProperty suit;
 

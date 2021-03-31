@@ -24,7 +24,6 @@ public class Value extends CardProperty{
         for (int i = 0; i < ALLVALUES.length; i++){
             if (this == ALLVALUES[i]) return i;
         }
-
         throw new RuntimeException();
     }
 }

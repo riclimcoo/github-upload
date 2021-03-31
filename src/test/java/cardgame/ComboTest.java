@@ -11,7 +11,7 @@ import cardgame.Combo.ComboType;
 
 import static cardgame.ConvenientCards.*;
 
-public class HandTest {
+public class ComboTest {
     @Test 
     public void shouldMakeCardList(){
         CardList myList = new CardList(threeDiamonds, fourDiamonds);

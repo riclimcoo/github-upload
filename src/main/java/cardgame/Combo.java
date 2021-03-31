@@ -55,8 +55,6 @@ public class Combo {
 
     private boolean beatsSame(Combo challenger){
         switch(challenger.type){
-            case FLUSH:
-                return beatsFlush(challenger);
             case TRIOHOUSE:
                 return beatsTrioHouse(challenger);
             case QUADHOUSE:
@@ -82,6 +80,7 @@ public class Combo {
         return (myValue.canBeat(enemyValue));
     }
 
+    // Pinoy way of beating flush.
     private boolean beatsFlush(Combo challenger){
         Suit mySuit = list.get(0).getSuit();
         Suit theirSuit = challenger.list.get(0).getSuit();
